@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ShopifyProduct, CartItem } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
-import { ShoppingCart, Plus } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -44,7 +44,7 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
     >
       <Link to={`/produto/${node.handle}`} className="block">
         {/* Image */}
-        <div className="relative aspect-square rounded-xl overflow-hidden bg-cream mb-4">
+        <div className="relative aspect-square rounded-2xl overflow-hidden bg-background mb-4">
           {image ? (
             <img
               src={image.url}
@@ -52,40 +52,29 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <span className="text-4xl font-bold text-muted-foreground/20">TSLV</span>
+            <div className="w-full h-full flex items-center justify-center bg-muted">
+              <span className="text-4xl font-bold text-muted-foreground/20">
+                TSLV
+              </span>
             </div>
           )}
-
-          <Button
-            size="icon"
-            className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 rounded-full bg-foreground text-background hover:bg-foreground/90"
-            onClick={handleAddToCart}
-          >
-            <Plus className="w-4 h-4" />
-          </Button>
         </div>
 
         {/* Content */}
-        <div className="space-y-1.5">
+        <div className="space-y-2">
           <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
             {node.title}
           </h3>
 
-          {node.description && (
-            <p className="text-sm text-muted-foreground line-clamp-2">{node.description}</p>
-          )}
-
-          <div className="flex items-center justify-between pt-1">
+          <div className="flex items-center justify-between">
             <span className="text-lg font-extrabold text-foreground">
               R$ {price.toFixed(2)}
             </span>
 
             <Button
-              variant="outline"
               size="sm"
               onClick={handleAddToCart}
-              className="gap-2 rounded-full text-xs"
+              className="gap-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-bold"
             >
               <ShoppingCart className="w-3.5 h-3.5" />
               Adicionar

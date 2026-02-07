@@ -1,64 +1,64 @@
-import { Target, Beaker, Heart, TrendingUp } from "lucide-react";
-
-const values = [
-  {
-    icon: Beaker,
-    title: "Ciência",
-    description: "Fórmulas baseadas em evidências científicas. Transparência total nos ingredientes.",
-  },
-  {
-    icon: Target,
-    title: "Consistência",
-    description: "Resultados reais vêm de escolhas diárias. Apoiamos sua jornada, não prometemos milagres.",
-  },
-  {
-    icon: Heart,
-    title: "Bem-estar",
-    description: "Saúde como base para uma vida plena. Energia, foco, equilíbrio e realização.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Performance",
-    description: "Para quem quer evoluir. Produtos que acompanham sua ambição e disciplina.",
-  },
-];
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const About = () => {
   return (
-    <section id="sobre" className="py-24 bg-foreground text-background overflow-hidden">
+    <section id="sobre" className="py-24 lg:py-32 bg-foreground text-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest mb-4 text-primary-foreground/60">
-              Sobre a Marca
+            <p className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-primary">
+              Sobre a The Solve
             </p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-background">
-              THE SOLVE não é sobre{" "}
-              <em className="not-italic text-primary">milagres</em>
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-8 text-background leading-tight">
+              Não vendemos milagres.
+              <br />
+              Vendemos{" "}
+              <span className="text-primary">consistência.</span>
             </h2>
-            <p className="text-lg text-background/70 mb-6 leading-relaxed">
-              Somos uma marca brasileira de nutrição funcional e performance que ocupa
-              o espaço entre ciência e lifestyle. Nosso propósito é inspirar pessoas a
-              serem protagonistas das próprias histórias.
+            <p className="text-lg text-background/60 mb-6 leading-relaxed">
+              Somos uma marca brasileira de nutrição funcional que ocupa o espaço
+              entre ciência e lifestyle. Nosso propósito é inspirar pessoas a
+              fazerem escolhas diárias inteligentes para energia, foco e
+              bem-estar.
             </p>
-            <p className="text-lg text-background/70 leading-relaxed">
-              Vendemos escolhas diárias de bem-estar e performance. Entregamos ciência,
-              consistência e um estilo de vida funcional.
+            <p className="text-lg text-background/60 mb-10 leading-relaxed">
+              Cada fórmula é desenvolvida com ingredientes de alta qualidade,
+              respaldados por evidências científicas. Sem atalhos, sem promessas
+              vazias.
             </p>
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-bold gap-2"
+              asChild
+            >
+              <a href="#produtos">
+                Experimente agora
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </Button>
           </div>
 
-          {/* Right Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {values.map((value, index) => (
+          {/* Right - Stats */}
+          <div className="grid grid-cols-2 gap-6">
+            {[
+              { number: "75+", label: "Ingredientes funcionais" },
+              { number: "200g", label: "Por embalagem" },
+              { number: "30", label: "Doses por pacote" },
+              { number: "100%", label: "Baseado em ciência" },
+            ].map((stat, index) => (
               <div
-                key={value.title}
-                className="p-6 rounded-2xl bg-background/5 border border-background/10 hover:bg-background/10 transition-colors duration-300 animate-fade-up opacity-0"
+                key={stat.label}
+                className="p-8 rounded-2xl bg-background/5 border border-background/10 text-center animate-fade-up opacity-0"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
-                <value.icon className="w-7 h-7 text-background/60 mb-4" />
-                <h3 className="text-lg font-bold mb-2 text-background">{value.title}</h3>
-                <p className="text-sm text-background/60">{value.description}</p>
+                <div className="text-4xl sm:text-5xl font-extrabold text-primary mb-2">
+                  {stat.number}
+                </div>
+                <p className="text-sm text-background/50 font-medium">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>

@@ -1,69 +1,73 @@
-import { Zap, Dumbbell, Moon } from "lucide-react";
+import { Leaf, Sun, Brain, Heart, Sparkles } from "lucide-react";
 
-const categories = [
+const benefits = [
   {
-    id: "energy",
-    title: "ENERGY",
-    subtitle: "Ativação & Foco",
-    description: "Energia limpa e sustentada para sua rotina. Sem crashes, sem ansiedade.",
-    icon: Zap,
+    icon: Sun,
+    title: "Energia Limpa",
+    description:
+      "Energia sustentada ao longo do dia sem crashes. Matchá, maca e vitaminas do complexo B trabalham juntos para manter você ativo.",
   },
   {
-    id: "performance",
-    title: "PERFORMANCE",
-    subtitle: "Força & Evolução",
-    description: "Potencialize seus treinos e recupere-se melhor. Resultados reais.",
-    icon: Dumbbell,
+    icon: Brain,
+    title: "Foco Mental",
+    description:
+      "Clareza e concentração para sua rotina. Ingredientes adaptógenos que suportam a função cognitiva naturalmente.",
   },
   {
-    id: "recovery",
-    title: "RECOVERY",
-    subtitle: "Sono & Recuperação",
-    description: "Durma profundamente e acorde renovado. O descanso que você merece.",
-    icon: Moon,
+    icon: Heart,
+    title: "Saúde Digestiva",
+    description:
+      "Fibras prebióticas e probióticos para um intestino saudável. Uma base forte para absorver os nutrientes que seu corpo precisa.",
+  },
+  {
+    icon: Leaf,
+    title: "Nutrição Completa",
+    description:
+      "Vitaminas, minerais e superfoods que preenchem as lacunas da sua alimentação diária. Tudo em uma dose.",
+  },
+  {
+    icon: Sparkles,
+    title: "Imunidade",
+    description:
+      "Antioxidantes e micronutrientes que fortalecem seu sistema imunológico. Cúrcuma, chlorella e vitamina C.",
   },
 ];
 
 export const Categories = () => {
   return (
-    <section id="categorias" className="py-24 bg-cream">
+    <section id="beneficios" className="py-24 lg:py-32 bg-cream">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">
-            Portfólio
+        {/* Top text */}
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <p className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">
+            Por que Daily Greens?
           </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4">
-            Organize sua jornada
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+            Projetado para apoiar seu estilo de vida
           </h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Produtos organizados por estados. Encontre o que você precisa para cada momento.
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Formulamos o Daily Greens para entregar nutrição avançada em cada
+            dose. Ideal para quem busca energia, foco e bem-estar diário.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {categories.map((category, index) => (
+        {/* Benefits grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {benefits.map((benefit, index) => (
             <div
-              key={category.id}
-              className="group relative p-8 rounded-2xl border border-border bg-background hover:shadow-brand-lg transition-all duration-500 cursor-pointer animate-fade-up opacity-0"
-              style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+              key={benefit.title}
+              className="text-center animate-fade-up opacity-0"
+              style={{ animationDelay: `${0.1 + index * 0.08}s` }}
             >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                <category.icon className="w-7 h-7" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
+                <benefit.icon className="w-7 h-7" />
               </div>
-
-              <h3 className="text-2xl font-extrabold text-foreground mb-1">
-                {category.title}
+              <h3 className="text-xl font-extrabold text-foreground mb-3">
+                {benefit.title}
               </h3>
-              <p className="text-sm font-semibold text-primary mb-3">
-                {category.subtitle}
+              <p className="text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                {benefit.description}
               </p>
-              <p className="text-muted-foreground">
-                {category.description}
-              </p>
-
-              <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-xs text-primary uppercase tracking-wider font-semibold">Em breve →</span>
-              </div>
             </div>
           ))}
         </div>
