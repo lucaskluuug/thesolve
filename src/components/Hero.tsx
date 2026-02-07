@@ -1,71 +1,56 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-accent-blue/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-highlight/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/30 rounded-full blur-3xl" />
+    <section className="relative pt-20 bg-cream">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-16 sm:py-24 lg:py-32">
+          <div className="max-w-3xl">
+            {/* Headline */}
+            <h1
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-foreground leading-[0.95] mb-6 animate-fade-up opacity-0"
+              style={{ animationDelay: "0.1s" }}
+            >
+              Nutrição que{" "}
+              <em className="not-italic text-primary">resolve</em>
+            </h1>
+
+            {/* Subheadline */}
+            <p
+              className="text-lg sm:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed animate-fade-up opacity-0"
+              style={{ animationDelay: "0.25s" }}
+            >
+              Daily Greens com fibras, vitaminas, minerais e superfoods.
+              Energia limpa, foco e bem-estar em uma dose diária.
+            </p>
+
+            {/* CTA */}
+            <div
+              className="flex flex-col sm:flex-row items-start gap-4 animate-fade-up opacity-0"
+              style={{ animationDelay: "0.4s" }}
+            >
+              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 text-base gap-2" asChild>
+                <a href="#produtos">
+                  Comprar agora
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" className="rounded-full px-8 text-base border-foreground/20" asChild>
+                <a href="#sobre">Saiba mais</a>
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div 
-            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-8 animate-fade-up"
-            style={{ animationDelay: "0.1s" }}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span className="font-body text-sm font-medium">Nutrição Funcional & Performance</span>
-          </div>
-
-          {/* Headline */}
-          <h1 
-            className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-primary leading-tight mb-6 animate-fade-up opacity-0"
-            style={{ animationDelay: "0.2s" }}
-          >
-            Seja protagonista
-            <br />
-            <span className="text-accent">da sua história</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p 
-            className="font-body text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up opacity-0"
-            style={{ animationDelay: "0.3s" }}
-          >
-            Escolhas diárias de bem-estar e performance. Ciência, consistência e 
-            estilo de vida funcional para quem quer viver com mais energia, foco e realização.
-          </p>
-
-          {/* CTAs */}
-          <div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up opacity-0"
-            style={{ animationDelay: "0.4s" }}
-          >
-            <Button variant="hero" size="lg" asChild>
-              <a href="#produtos">Explorar Produtos</a>
-            </Button>
-            <Button variant="hero-outline" size="lg" asChild>
-              <a href="#sobre">Conhecer a Marca</a>
-            </Button>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div 
-            className="mt-20 animate-fade-up opacity-0"
-            style={{ animationDelay: "0.6s" }}
-          >
-            <a 
-              href="#categorias" 
-              className="inline-flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-            >
-              <span className="font-body text-xs uppercase tracking-widest">Descubra</span>
-              <ArrowDown className="w-5 h-5 animate-bounce" />
-            </a>
+      {/* Bottom banner strip */}
+      <div className="bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between py-4 gap-3 text-sm">
+            <span>✦ Ciência + Lifestyle</span>
+            <span>✦ Fórmulas baseadas em evidências</span>
+            <span>✦ Sem milagres, só consistência</span>
           </div>
         </div>
       </div>

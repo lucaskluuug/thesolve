@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,124 +6,107 @@
 
 /* The Solve Design System
    Brand Colors:
-   - Forest Green: #0F4C2E (primary)
-   - Sky Blue: #A6CFFF (accent-blue)
-   - Cream: #F7F0E5 (background)
-   - Burnt Orange: #ED5B1B (accent)
-   - Lemon: #FFF46C (highlight)
+   - Forest Green: #0F4C2E (primary/accent)
+   - Cream: #F7F0E5 (warm background)
+   - Black: #0A0A0A (text)
+   - White: #FFFFFF (clean surfaces)
 */
 
 @layer base {
   :root {
-    /* Cream background - warm and inviting */
-    --background: 36 52% 93%;
-    --foreground: 152 66% 18%;
+    /* White background - clean Huel style */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
 
-    /* Cards slightly lighter than background */
+    /* Slight warm cards */
     --card: 36 52% 96%;
-    --card-foreground: 152 66% 18%;
+    --card-foreground: 0 0% 4%;
 
-    --popover: 36 52% 96%;
-    --popover-foreground: 152 66% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
 
     /* Forest Green - primary brand color */
     --primary: 152 66% 18%;
-    --primary-foreground: 36 52% 93%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Subtle green tint for secondary */
-    --secondary: 152 25% 88%;
-    --secondary-foreground: 152 66% 18%;
+    /* Light grey secondary */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 4%;
 
-    /* Muted cream tones */
-    --muted: 36 30% 88%;
-    --muted-foreground: 152 20% 40%;
+    /* Muted tones */
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
 
-    /* Burnt Orange - accent color */
-    --accent: 16 85% 51%;
-    --accent-foreground: 36 52% 96%;
+    /* Green accent */
+    --accent: 152 66% 18%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Sky Blue - secondary accent */
-    --accent-blue: 213 100% 83%;
-    --accent-blue-foreground: 152 66% 18%;
-
-    /* Lemon Yellow - highlight */
-    --highlight: 55 100% 71%;
-    --highlight-foreground: 152 66% 18%;
+    /* Cream warm tone */
+    --cream: 36 52% 93%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 36 52% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 36 30% 85%;
-    --input: 36 30% 85%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
     --ring: 152 66% 18%;
 
-    --radius: 0.75rem;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(152 66% 18%) 0%, hsl(152 50% 25%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(16 85% 51%) 0%, hsl(16 90% 60%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(36 52% 93%) 0%, hsl(36 40% 88%) 100%);
+    --radius: 0.5rem;
 
     /* Shadows */
-    --shadow-sm: 0 2px 8px -2px hsl(152 66% 18% / 0.08);
-    --shadow-md: 0 8px 24px -8px hsl(152 66% 18% / 0.12);
-    --shadow-lg: 0 16px 48px -16px hsl(152 66% 18% / 0.16);
-    --shadow-glow: 0 0 40px hsl(16 85% 51% / 0.2);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 16px -4px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 12px 40px -12px rgb(0 0 0 / 0.12);
+    --shadow-glow: 0 0 40px hsl(152 66% 18% / 0.15);
 
     /* Sidebar */
-    --sidebar-background: 36 52% 96%;
-    --sidebar-foreground: 152 66% 18%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 4%;
     --sidebar-primary: 152 66% 18%;
-    --sidebar-primary-foreground: 36 52% 93%;
-    --sidebar-accent: 36 30% 90%;
-    --sidebar-accent-foreground: 152 66% 18%;
-    --sidebar-border: 36 30% 85%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 4%;
+    --sidebar-border: 0 0% 90%;
     --sidebar-ring: 152 66% 18%;
   }
 
   .dark {
-    --background: 152 66% 8%;
-    --foreground: 36 52% 93%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
 
-    --card: 152 50% 12%;
-    --card-foreground: 36 52% 93%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 152 50% 12%;
-    --popover-foreground: 36 52% 93%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 36 52% 93%;
-    --primary-foreground: 152 66% 18%;
+    --primary: 152 50% 45%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 152 30% 20%;
-    --secondary-foreground: 36 52% 93%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 152 30% 18%;
-    --muted-foreground: 36 30% 70%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 16 85% 55%;
-    --accent-foreground: 36 52% 96%;
-
-    --accent-blue: 213 80% 70%;
-    --accent-blue-foreground: 152 66% 8%;
-
-    --highlight: 55 100% 65%;
-    --highlight-foreground: 152 66% 8%;
+    --accent: 152 50% 45%;
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 70% 50%;
-    --destructive-foreground: 36 52% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 152 30% 20%;
-    --input: 152 30% 20%;
-    --ring: 36 52% 93%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 152 50% 45%;
 
-    --sidebar-background: 152 50% 10%;
-    --sidebar-foreground: 36 52% 93%;
-    --sidebar-primary: 36 52% 93%;
-    --sidebar-primary-foreground: 152 66% 18%;
-    --sidebar-accent: 152 30% 15%;
-    --sidebar-accent-foreground: 36 52% 93%;
-    --sidebar-border: 152 30% 18%;
-    --sidebar-ring: 36 52% 93%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 152 50% 45%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 152 50% 45%;
   }
 }
 
@@ -142,8 +125,8 @@
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  .bg-cream {
+    background-color: hsl(36 52% 93%);
   }
 
   .animate-fade-up {
@@ -175,12 +158,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes scaleIn {

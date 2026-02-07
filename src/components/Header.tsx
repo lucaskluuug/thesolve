@@ -1,45 +1,37 @@
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { useCartStore } from "@/stores/cartStore";
 import { useState } from "react";
 import { CartDrawer } from "./CartDrawer";
+import logoImg from "@/assets/logo-thesolve.png";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const totalItems = useCartStore((state) => state.getTotalItems());
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <span className="font-display text-2xl font-bold text-primary tracking-tight">
-              THE SOLVE
-            </span>
-            <span className="font-display text-xs font-semibold text-muted-foreground tracking-widest">
-              TSLV
-            </span>
+          <a href="/" className="flex items-center">
+            <img src={logoImg} alt="The Solve" className="h-8 lg:h-10" />
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#produtos" className="font-body text-sm font-medium text-foreground hover:text-accent transition-colors">
+            <a href="#produtos" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Produtos
             </a>
-            <a href="#categorias" className="font-body text-sm font-medium text-foreground hover:text-accent transition-colors">
-              Categorias
-            </a>
-            <a href="#sobre" className="font-body text-sm font-medium text-foreground hover:text-accent transition-colors">
+            <a href="#sobre" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Sobre
+            </a>
+            <a href="#categorias" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+              Categorias
             </a>
           </nav>
 
           {/* Cart & Mobile Menu */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <CartDrawer />
-            
             <Button
               variant="ghost"
               size="icon"
@@ -55,27 +47,9 @@ export const Header = () => {
         {mobileMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border animate-fade-up">
             <div className="flex flex-col gap-4">
-              <a 
-                href="#produtos" 
-                className="font-body text-sm font-medium text-foreground hover:text-accent transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Produtos
-              </a>
-              <a 
-                href="#categorias" 
-                className="font-body text-sm font-medium text-foreground hover:text-accent transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Categorias
-              </a>
-              <a 
-                href="#sobre" 
-                className="font-body text-sm font-medium text-foreground hover:text-accent transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Sobre
-              </a>
+              <a href="#produtos" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>Produtos</a>
+              <a href="#sobre" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>Sobre</a>
+              <a href="#categorias" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setMobileMenuOpen(false)}>Categorias</a>
             </div>
           </nav>
         )}
