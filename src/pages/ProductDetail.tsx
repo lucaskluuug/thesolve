@@ -5,7 +5,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Loader2, Minus, Plus, ShoppingCart, ChevronDown, Leaf, Zap, Brain, Shield } from "lucide-react";
+import { ArrowLeft, Loader2, Minus, Plus, ShoppingCart, ChevronDown, Leaf, Zap, Brain, Shield, X, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 const ProductDetail = () => {
@@ -16,6 +16,7 @@ const ProductDetail = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [openAccordion, setOpenAccordion] = useState<string | null>("what-is");
+  const [showNutritionModal, setShowNutritionModal] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
 
   useEffect(() => {
@@ -325,27 +326,130 @@ const ProductDetail = () => {
           </div>
         </section>
 
-        {/* Nutrition Quick Facts */}
-        <section className="py-16 bg-cream">
+        {/* Nutrition Section - AG1 Style */}
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-center text-foreground mb-12">
-              Em um scoop de Daily Greens
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
-              {[
-                { label: "Calorias", value: "40" },
-                { label: "Carboidratos", value: "6g" },
-                { label: "Fibras", value: "2g" },
-                { label: "Açúcar", value: "<1g" },
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl sm:text-5xl font-black text-primary mb-2">{stat.value}</div>
-                  <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+              {/* Left: Nutrition Facts */}
+              <div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-4">
+                  Em um scoop de<br />Daily Greens
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
+                  Daily Greens complementa sua alimentação diária. Fácil de integrar a qualquer estilo de vida ou rotina de saúde. Cuide dos seus macros, depois tome Daily Greens.
+                </p>
+
+                <div className="max-w-md">
+                  {[
+                    { label: "CALORIAS", value: "16" },
+                    { label: "CARBOIDRATOS", value: "1,8g" },
+                    { label: "FIBRAS ALIMENTARES", value: "6,2g" },
+                    { label: "VITAMINA C", value: "90mg" },
+                    { label: "VITAMINA D", value: "10µg" },
+                    { label: "VITAMINA E", value: "10mg" },
+                    { label: "VITAMINAS DO COMPLEXO B", value: "8 tipos" },
+                    { label: "ZINCO", value: "3,6mg" },
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center justify-between py-4 border-b border-border/60">
+                      <span className="text-sm font-bold text-foreground tracking-wide uppercase">{item.label}</span>
+                      <span className="text-sm font-bold text-foreground">{item.value}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+
+                <button
+                  onClick={() => setShowNutritionModal(true)}
+                  className="inline-flex items-center gap-2 mt-8 px-6 py-3 border border-foreground rounded-full text-sm font-bold text-foreground hover:bg-foreground hover:text-background transition-colors"
+                >
+                  Ver tabela nutricional completa
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Right: Image */}
+              <div className="bg-cream rounded-2xl p-8 flex items-center justify-center min-h-[400px] lg:min-h-[560px]">
+                {images.length > 0 ? (
+                  <img
+                    src={images[0]?.node.url}
+                    alt={product.title}
+                    className="max-w-full max-h-[500px] object-contain"
+                  />
+                ) : (
+                  <div className="text-center">
+                    <Leaf className="w-20 h-20 text-primary/30 mx-auto mb-4" />
+                    <span className="text-primary/40 font-bold text-xl">DAILY GREENS</span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </section>
+
+        {/* Full Nutrition Table Modal */}
+        {showNutritionModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowNutritionModal(false)} />
+            <div className="relative bg-background rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-2xl">
+              <div className="sticky top-0 bg-background border-b border-border px-6 py-4 flex items-center justify-between rounded-t-2xl">
+                <h3 className="text-lg font-black text-foreground">Informação Nutricional</h3>
+                <button onClick={() => setShowNutritionModal(false)} className="p-2 hover:bg-muted rounded-full transition-colors">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="px-6 py-4">
+                <p className="text-sm text-muted-foreground mb-4">
+                  Porções por embalagem: 20 · Porção: 10g (2 medidores)
+                </p>
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-foreground">
+                      <th className="text-left py-2 font-bold text-foreground">Nutriente</th>
+                      <th className="text-right py-2 font-bold text-foreground">10g</th>
+                      <th className="text-right py-2 font-bold text-foreground">%VD*</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { name: "Valor energético", value: "16 kcal", vd: "1%" },
+                      { name: "Carboidratos", value: "1,8g", vd: "1%" },
+                      { name: "Fibras alimentares", value: "6,2g", vd: "25%" },
+                      { name: "Vitamina D", value: "10µg", vd: "67%" },
+                      { name: "Vitamina E", value: "10mg", vd: "67%" },
+                      { name: "Vitamina C", value: "90mg", vd: "90%" },
+                      { name: "Vitamina B1", value: "1,2mg", vd: "100%" },
+                      { name: "Vitamina B2", value: "1,2mg", vd: "100%" },
+                      { name: "Vitamina B3", value: "15mg", vd: "100%" },
+                      { name: "Vitamina B5", value: "5mg", vd: "100%" },
+                      { name: "Vitamina B6", value: "1,3mg", vd: "100%" },
+                      { name: "Vitamina B7 (Biotina)", value: "30µg", vd: "100%" },
+                      { name: "Vitamina B9 (Ác. Fólico)", value: "240µg", vd: "60%" },
+                      { name: "Vitamina B12", value: "2,4µg", vd: "100%" },
+                      { name: "Zinco", value: "3,6mg", vd: "33%" },
+                    ].map((row, index) => (
+                      <tr key={index} className="border-b border-border/50">
+                        <td className="py-3 text-foreground">{row.name}</td>
+                        <td className="py-3 text-right text-foreground font-medium">{row.value}</td>
+                        <td className="py-3 text-right text-muted-foreground">{row.vd}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
+                  * Percentual de valores diários fornecidos pela porção.
+                </p>
+                <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                  Não contém quantidades significativas de açúcares totais, açúcares adicionados, proteínas, gorduras totais, gorduras saturadas, gorduras trans e sódio.
+                </p>
+                <div className="mt-6 pt-4 border-t border-border">
+                  <p className="text-xs font-bold text-foreground mb-2">Ingredientes:</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Polidextrose, inulina obtida da raiz de chicória (Cichorium intybus), farinha de maca peruana, polpa de limão em pó, chlorella, cúrcuma, ora-pro-nóbis, matchá, vinagre de maçã, gengibre, ácido ascórbico, guaraná, acetato de DL-alfa-tocoferol, niacinamida, bisglicinato de zinco, D-pantotenato de cálcio, cloridrato de piridoxina, cloridrato de tiamina, riboflavina, ácido fólico, D-biotina, colecalciferol, cianocobalamina, acidulante ácido cítrico, aromatizante aroma idêntico ao natural de frutas cítricas, espessante goma xantana, corante natural clorofila, antiumectante dióxido de silício.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
       <Footer />
     </div>
