@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { fetchProductByHandle, ShopifyProduct, CartItem } from "@/lib/shopify";
+import { fetchProductByHandle, ShopifyProduct, CartItem, createStorefrontCheckout } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Loader2, Minus, Plus, ShoppingCart, ChevronDown, Leaf, Zap, Brain, Shield, X, ArrowRight } from "lucide-react";
+import { ArrowLeft, Loader2, Minus, Plus, ShoppingCart, ChevronDown, Leaf, Zap, Brain, Shield, X, ArrowRight, Sparkles, Heart, Droplets, Sun, Star, Quote } from "lucide-react";
 import { toast } from "sonner";
 
 const ProductDetail = () => {
@@ -18,6 +18,11 @@ const ProductDetail = () => {
   const [openAccordion, setOpenAccordion] = useState<string | null>("what-is");
   const [showNutritionModal, setShowNutritionModal] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [handle]);
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -68,6 +73,25 @@ const ProductDetail = () => {
   const price = selectedVariant ? parseFloat(selectedVariant.price.amount) : 0;
   const images = product.images.edges;
 
+  const handleBuyNow = async () => {
+    if (!selectedVariant) return;
+    try {
+      const cartItem: CartItem = {
+        product: { node: product } as ShopifyProduct,
+        variantId: selectedVariant.id,
+        variantTitle: selectedVariant.title,
+        price: selectedVariant.price,
+        quantity,
+        selectedOptions: selectedVariant.selectedOptions || [],
+      };
+      const checkoutUrl = await createStorefrontCheckout([cartItem]);
+      window.open(checkoutUrl, '_blank');
+    } catch (err) {
+      console.error(err);
+      toast.error("Erro ao criar checkout");
+    }
+  };
+
   const handleAddToCart = () => {
     if (!selectedVariant) return;
     const cartItem: CartItem = {
@@ -98,11 +122,6 @@ const ProductDetail = () => {
       content: "Homens e mulheres maiores de 18 anos que buscam complementar a alimentação com nutrientes essenciais. Compatível com dietas veganas, low-carb, paleo e jejum intermitente."
     },
     {
-      id: "benefits",
-      title: "Benefícios",
-      content: "Suporte diário para: produção de energia, digestão regular, defesa imunológica, foco mental e redução de inflamação."
-    },
-    {
       id: "how-to",
       title: "Como usar",
       content: "1. Misture 1 scoop (13g) de Daily Greens em 200-300ml de água gelada.\n2. Agite até dissolver completamente.\n3. Aproveite! Melhor consumido pela manhã em jejum."
@@ -114,11 +133,31 @@ const ProductDetail = () => {
     },
   ];
 
-  const benefits = [
-    { icon: Zap, label: "Energia Limpa" },
-    { icon: Brain, label: "Foco Mental" },
-    { icon: Shield, label: "Imunidade" },
-    { icon: Leaf, label: "Digestão" },
+  const benefitsData = [
+    { icon: Shield, title: "Suporte Imunológico", description: "Vitaminas C, D, E e Zinco para fortalecer suas defesas naturais." },
+    { icon: Zap, title: "Metabolismo Energético", description: "Complexo B completo e Guaraná para energia sustentável ao longo do dia." },
+    { icon: Brain, title: "Função Cognitiva", description: "Matchá e Maca Peruana para foco mental e clareza." },
+    { icon: Leaf, title: "Suporte Digestivo", description: "6,2g de fibras prebióticas (inulina e polidextrose) por dose." },
+    { icon: Sparkles, title: "Pele, Cabelo & Unhas", description: "Biotina, Vitamina E e antioxidantes para beleza de dentro para fora." },
+    { icon: Droplets, title: "Detox Natural", description: "Chlorella, Cúrcuma e Ora-pro-nóbis para limpeza e desintoxicação." },
+  ];
+
+  const testimonials = [
+    {
+      name: "Mariana S.",
+      text: "Comecei a tomar há 3 semanas e a diferença na disposição é absurda. Acordo sem aquela preguiça de sempre.",
+      rating: 5,
+    },
+    {
+      name: "Rafael T.",
+      text: "Sabor surpreendente, achei que seria terrível por ser verde mas é leve e cítrico. Virou rotina.",
+      rating: 5,
+    },
+    {
+      name: "Carolina M.",
+      text: "Minha digestão melhorou demais. Sinto o intestino regulado todos os dias desde que comecei.",
+      rating: 5,
+    },
   ];
 
   return (
@@ -134,13 +173,12 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        {/* Main Product Section - AG1 Style */}
+        {/* Main Product Section */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             
             {/* Left: Image Gallery */}
             <div className="space-y-4">
-              {/* Main Image */}
               <div className="aspect-square rounded-2xl overflow-hidden bg-cream relative">
                 {images.length > 0 ? (
                   <img
@@ -153,7 +191,6 @@ const ProductDetail = () => {
                     <span className="text-6xl font-black text-primary/20">TSLV</span>
                   </div>
                 )}
-                {/* Trust badges overlayed on image */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
                   <div className="flex items-center gap-6 text-white text-xs font-medium">
                     <div className="flex items-center gap-2">
@@ -172,7 +209,6 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Thumbnails */}
               {images.length > 1 && (
                 <div className="flex gap-3 overflow-x-auto pb-2">
                   {images.map((img, index) => (
@@ -194,17 +230,14 @@ const ProductDetail = () => {
 
             {/* Right: Product Info */}
             <div className="lg:py-4">
-              {/* Title */}
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-2">
                 {product.title}
               </h1>
 
-              {/* Flavor description */}
               {product.description && (
                 <p className="text-muted-foreground italic mb-6">{product.description}</p>
               )}
 
-              {/* Variants as flavor chips (AG1 style) */}
               {product.variants.edges.length > 1 && (
                 <div className="flex flex-wrap gap-2 mb-8">
                   {product.variants.edges.map((variant, index) => (
@@ -223,9 +256,8 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              {/* Purchase Card - AG1 Style */}
+              {/* Purchase Card */}
               <div className="border border-border rounded-2xl overflow-hidden mb-8">
-                {/* Buy option */}
                 <div className="p-6 bg-primary/5 border-b border-primary/10">
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-bold text-foreground text-lg">Compra Única</span>
@@ -236,7 +268,6 @@ const ProductDetail = () => {
                   <p className="text-sm text-muted-foreground">Frete calculado no checkout</p>
                 </div>
 
-                {/* Benefits list */}
                 <div className="p-6 space-y-3">
                   <div className="flex items-center gap-3 text-sm">
                     <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs">✓</span>
@@ -253,32 +284,44 @@ const ProductDetail = () => {
                 </div>
               </div>
 
-              {/* Quantity + Add to Cart */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="inline-flex items-center gap-2 border border-border rounded-full p-1">
-                  <Button variant="ghost" size="icon" className="rounded-full h-10 w-10" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
-                    <Minus className="w-4 h-4" />
-                  </Button>
-                  <span className="w-10 text-center font-bold text-foreground">{quantity}</span>
-                  <Button variant="ghost" size="icon" className="rounded-full h-10 w-10" onClick={() => setQuantity(quantity + 1)}>
-                    <Plus className="w-4 h-4" />
+              {/* Quantity + Buy Now + Add to Cart */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="inline-flex items-center gap-2 border border-border rounded-full p-1">
+                    <Button variant="ghost" size="icon" className="rounded-full h-10 w-10" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+                      <Minus className="w-4 h-4" />
+                    </Button>
+                    <span className="w-10 text-center font-bold text-foreground">{quantity}</span>
+                    <Button variant="ghost" size="icon" className="rounded-full h-10 w-10" onClick={() => setQuantity(quantity + 1)}>
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                  </div>
+
+                  <Button
+                    size="lg"
+                    className="flex-1 gap-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full text-base font-bold h-12"
+                    onClick={handleBuyNow}
+                    disabled={!selectedVariant?.availableForSale}
+                  >
+                    {selectedVariant?.availableForSale
+                      ? `Comprar agora — R$ ${(price * quantity).toFixed(2)}`
+                      : "Indisponível"}
                   </Button>
                 </div>
 
                 <Button
+                  variant="outline"
                   size="lg"
-                  className="flex-1 gap-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full text-base font-bold h-12"
+                  className="w-full gap-3 rounded-full text-base font-bold h-12"
                   onClick={handleAddToCart}
                   disabled={!selectedVariant?.availableForSale}
                 >
                   <ShoppingCart className="w-5 h-5" />
-                  {selectedVariant?.availableForSale
-                    ? `Adicionar — R$ ${(price * quantity).toFixed(2)}`
-                    : "Indisponível"}
+                  Adicionar ao carrinho
                 </Button>
               </div>
 
-              {/* Accordion Info - AG1 Style */}
+              {/* Accordion Info */}
               <div className="border-t border-border">
                 {accordionItems.map((item) => (
                   <div key={item.id} className="border-b border-border">
@@ -307,30 +350,36 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        {/* Benefits Strip - AG1 Style */}
-        <section className="mt-20 bg-primary text-primary-foreground py-16">
+        {/* Benefits Section - Huel Style */}
+        <section className="mt-20 py-20 bg-primary/5">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-center mb-12">
-              Suporte diário em um único scoop
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-primary-foreground/10 flex items-center justify-center mx-auto mb-4">
-                    <benefit.icon className="w-7 h-7" />
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-4">
+                Mais de <span className="italic text-primary">75 benefícios</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Cada dose é rica em vitaminas, minerais e superfoods com benefícios comprovados pela ciência para apoiar e manter sua saúde.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {benefitsData.map((benefit, index) => (
+                <div key={index} className="text-center group">
+                  <div className="w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center mx-auto mb-5 group-hover:border-primary group-hover:bg-primary/5 transition-all">
+                    <benefit.icon className="w-7 h-7 text-foreground group-hover:text-primary transition-colors" />
                   </div>
-                  <span className="font-bold text-lg">{benefit.label}</span>
+                  <h3 className="font-bold text-foreground text-lg mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Nutrition Section - AG1 Style */}
+        {/* Nutrition Section */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-              {/* Left: Nutrition Facts */}
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-4">
                   Em um scoop de<br />Daily Greens
@@ -366,7 +415,6 @@ const ProductDetail = () => {
                 </button>
               </div>
 
-              {/* Right: Image */}
               <div className="bg-cream rounded-2xl p-8 flex items-center justify-center min-h-[400px] lg:min-h-[560px]">
                 {images.length > 0 ? (
                   <img
@@ -382,6 +430,55 @@ const ProductDetail = () => {
                 )}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section - Huel Style */}
+        <section className="py-20 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
+                O que nossos clientes dizem
+              </h2>
+              <p className="text-primary-foreground/70 text-lg">Feedback real de quem já experimentou.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {testimonials.map((t, index) => (
+                <div key={index} className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-8 border border-primary-foreground/10">
+                  <Quote className="w-8 h-8 text-primary-foreground/30 mb-4" />
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" style={{ color: 'hsl(48, 96%, 53%)' }} />
+                    ))}
+                  </div>
+                  <p className="text-primary-foreground/90 leading-relaxed mb-6 text-sm">
+                    "{t.text}"
+                  </p>
+                  <span className="text-sm font-bold text-primary-foreground/70">— {t.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-4">
+              Pronto para começar?
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">
+              Um scoop por dia. Todos os nutrientes que seu corpo precisa.
+            </p>
+            <Button
+              size="lg"
+              className="rounded-full text-base font-bold h-14 px-12"
+              onClick={handleBuyNow}
+              disabled={!selectedVariant?.availableForSale}
+            >
+              Comprar agora — R$ {price.toFixed(2)}
+            </Button>
           </div>
         </section>
 
@@ -443,7 +540,7 @@ const ProductDetail = () => {
                 <div className="mt-6 pt-4 border-t border-border">
                   <p className="text-xs font-bold text-foreground mb-2">Ingredientes:</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Polidextrose, inulina obtida da raiz de chicória (Cichorium intybus), farinha de maca peruana, polpa de limão em pó, chlorella, cúrcuma, ora-pro-nóbis, matchá, vinagre de maçã, gengibre, ácido ascórbico, guaraná, acetato de DL-alfa-tocoferol, niacinamida, bisglicinato de zinco, D-pantotenato de cálcio, cloridrato de piridoxina, cloridrato de tiamina, riboflavina, ácido fólico, D-biotina, colecalciferol, cianocobalamina, acidulante ácido cítrico, aromatizante aroma idêntico ao natural de frutas cítricas, espessante goma xantana, corante natural clorofila, antiumectante dióxido de silício.
+                    Polidextrose, inulina obtida da raiz de chicória (Cichorium intybus), farinha de maca peruana, polpa de limão em pó, chlorella, cúrcuma, ora-pro-nóbis, matchá, vinagre de maçã, gengibre, ácido ascórbico, acetato de DL-alfa-tocoferol, niacinamida, bisglicinato de zinco, D-pantotenato de cálcio, cloridrato de piridoxina, cloridrato de tiamina, riboflavina, ácido fólico, D-biotina, colecalciferol, cianocobalamina, acidulante ácido cítrico, aromatizante aroma idêntico ao natural de frutas cítricas, espessante goma xantana, corante natural clorofila, antiumectante dióxido de silício.
                   </p>
                 </div>
               </div>
