@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import { CartDrawer } from "./CartDrawer";
 import logoImg from "@/assets/logo-thesolve.png";
 
-export const Header = () => {
+interface HeaderProps {
+  forceDark?: boolean;
+}
+
+export const Header = ({ forceDark = false }: HeaderProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -13,6 +17,9 @@ export const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // On product pages (forceDark), always use dark text/logo unless scrolled
+  const useLight = !forceDark && !scrolled;
 
   return (
     <header
@@ -30,7 +37,7 @@ export const Header = () => {
               src={logoImg}
               alt="The Solve"
               className={`h-8 lg:h-10 transition-all duration-300 ${
-                !scrolled ? "brightness-0 invert" : ""
+                useLight ? "brightness-0 invert" : ""
               }`}
             />
           </a>
@@ -40,9 +47,9 @@ export const Header = () => {
             <a
               href="#beneficios"
               className={`text-sm font-semibold transition-colors ${
-                scrolled
-                  ? "text-foreground hover:text-primary"
-                  : "text-white/90 hover:text-white"
+                useLight
+                  ? "text-white/90 hover:text-white"
+                  : "text-foreground hover:text-primary"
               }`}
             >
               Daily Greens
@@ -50,9 +57,9 @@ export const Header = () => {
             <a
               href="#ingredientes"
               className={`text-sm font-semibold transition-colors ${
-                scrolled
-                  ? "text-foreground hover:text-primary"
-                  : "text-white/90 hover:text-white"
+                useLight
+                  ? "text-white/90 hover:text-white"
+                  : "text-foreground hover:text-primary"
               }`}
             >
               Ingredientes
@@ -60,9 +67,9 @@ export const Header = () => {
             <a
               href="#sobre"
               className={`text-sm font-semibold transition-colors ${
-                scrolled
-                  ? "text-foreground hover:text-primary"
-                  : "text-white/90 hover:text-white"
+                useLight
+                  ? "text-white/90 hover:text-white"
+                  : "text-foreground hover:text-primary"
               }`}
             >
               Sobre
@@ -82,7 +89,7 @@ export const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              className={`md:hidden ${!scrolled ? "text-white" : ""}`}
+              className={`md:hidden ${useLight ? "text-white" : ""}`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
@@ -100,21 +107,21 @@ export const Header = () => {
             <div className="flex flex-col gap-4">
               <a
                 href="#beneficios"
-                className={`text-sm font-semibold ${scrolled ? "text-foreground" : "text-white"}`}
+                className={`text-sm font-semibold ${useLight ? "text-white" : "text-foreground"}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Daily Greens
               </a>
               <a
                 href="#ingredientes"
-                className={`text-sm font-semibold ${scrolled ? "text-foreground" : "text-white"}`}
+                className={`text-sm font-semibold ${useLight ? "text-white" : "text-foreground"}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Ingredientes
               </a>
               <a
                 href="#sobre"
-                className={`text-sm font-semibold ${scrolled ? "text-foreground" : "text-white"}`}
+                className={`text-sm font-semibold ${useLight ? "text-white" : "text-foreground"}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Sobre
