@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <>
       {/* Full-bleed Hero */}
-      <section className="relative min-h-screen flex items-center">
+      <section className="relative min-h-[66vh] flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
