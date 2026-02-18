@@ -71,29 +71,25 @@ export const Hero = () => {
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <div className="bg-foreground text-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 py-5">
-            <div className="flex items-center gap-3">
-              <Shield className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">
-                Fórmula baseada em ciência
-              </span>
+      {/* Trust Bar - Marquee */}
+      <div className="bg-foreground text-background overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap py-4">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center shrink-0">
+              <div className="flex items-center gap-3 mx-8">
+                <Shield className="w-5 h-5 text-primary shrink-0" />
+                <span className="text-sm font-medium">Fórmula baseada em ciência</span>
+              </div>
+              <div className="flex items-center gap-3 mx-8">
+                <FlaskConical className="w-5 h-5 text-primary shrink-0" />
+                <span className="text-sm font-medium">Ingredientes funcionais</span>
+              </div>
+              <div className="flex items-center gap-3 mx-8">
+                <Award className="w-5 h-5 text-primary shrink-0" />
+                <span className="text-sm font-medium">Qualidade premium garantida</span>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <FlaskConical className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">
-                Ingredientes funcionais
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Award className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium">
-                Qualidade premium garantida
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
