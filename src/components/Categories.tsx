@@ -42,7 +42,7 @@ export const Categories = () => {
           <p className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">
             Por que Daily Greens?
           </p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
             Projetado para apoiar seu estilo de vida
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">

@@ -11,7 +11,7 @@ export const About = () => {
             <p className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-primary">
               Sobre a The Solve
             </p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-8 text-background leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-background leading-tight">
               Não vendemos milagres.
               <br />
               Vendemos{" "}

@@ -7,7 +7,7 @@ export const Footer = () => {
       {/* CTA Banner */}
       <div className="bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-foreground mb-4">
             Comece sua jornada hoje
           </h2>
           <p className="text-primary-foreground/70 mb-8 max-w-lg mx-auto">

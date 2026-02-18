@@ -28,7 +28,7 @@ export const Hero = () => {
             </p>
 
             <h1
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[0.95] mb-6 animate-fade-up opacity-0"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[0.95] mb-6 animate-fade-up opacity-0"
               style={{ animationDelay: "0.2s" }}
             >
               Sua nutrição
