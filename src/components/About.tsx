@@ -18,15 +18,7 @@ export const About = () => {
               <span className="text-primary">consistência.</span>
             </h2>
             <p className="text-lg text-background/60 mb-6 leading-relaxed">
-              Somos uma marca brasileira de nutrição funcional que ocupa o espaço
-              entre ciência e lifestyle. Nosso propósito é inspirar pessoas a
-              fazerem escolhas diárias inteligentes para energia, foco e
-              bem-estar.
-            </p>
-            <p className="text-lg text-background/60 mb-10 leading-relaxed">
-              Cada fórmula é desenvolvida com ingredientes de alta qualidade,
-              respaldados por evidências científicas. Sem atalhos, sem promessas
-              vazias.
+              Existimos para transformar saúde e bem-estar com fórmulas inteligentes que unem ciência e estratégia funcional — para que cada pessoa escolha como quer se sentir, todos os dias.
             </p>
             <Button
               size="lg"
@@ -43,7 +35,7 @@ export const About = () => {
           {/* Right - Stats */}
           <div className="grid grid-cols-2 gap-6">
             {[
-              { number: "75+", label: "Ingredientes funcionais" },
+              { number: "15+", label: "Ingredientes funcionais" },
               { number: "200g", label: "Por embalagem" },
               { number: "30", label: "Doses por pacote" },
               { number: "100%", label: "Baseado em ciência" },
