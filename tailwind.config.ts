@@ -19,8 +19,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Inter"', 'sans-serif'],
-        body: ['"Inter"', 'sans-serif'],
+        display: ['"Aptos"', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        body: ['"Aptos"', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        accent: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",

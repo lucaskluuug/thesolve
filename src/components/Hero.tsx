@@ -28,14 +28,14 @@ export const Hero = () => {
             </p>
 
             <h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[0.95] mb-6 animate-fade-up opacity-0"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white leading-[0.95] mb-6 animate-fade-up opacity-0"
               style={{ animationDelay: "0.2s" }}
             >
               Sua nutrição
               <br />
               diária.
               <br />
-              <span className="text-primary">Resolvida.</span>
+              <span className="text-primary italic font-accent">Resolvida.</span>
             </h1>
 
             <div
@@ -50,7 +50,7 @@ export const Hero = () => {
             >
               <Button
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-base gap-2 font-bold"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-base gap-2 font-semibold"
                 asChild
               >
                 <a href="#produtos">

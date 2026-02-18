@@ -56,7 +56,7 @@ const ProductDetail = () => {
       <div className="min-h-screen bg-background">
         <Header forceDark />
         <div className="container mx-auto px-4 py-40 text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">Produto não encontrado</h1>
+          <h1 className="text-2xl font-semibold text-foreground mb-4">Produto não encontrado</h1>
           <Button variant="outline" asChild>
             <Link to="/">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -188,7 +188,7 @@ const ProductDetail = () => {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-primary/5">
-                    <span className="text-6xl font-black text-primary/20">TSLV</span>
+                    <span className="text-6xl font-semibold text-primary/20">TSLV</span>
                   </div>
                 )}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
@@ -230,7 +230,7 @@ const ProductDetail = () => {
 
             {/* Right: Product Info */}
             <div className="lg:py-4">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-2">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-2">
                 {product.title}
               </h1>
 
@@ -260,8 +260,8 @@ const ProductDetail = () => {
               <div className="border border-border rounded-2xl overflow-hidden mb-8">
                 <div className="p-6 bg-primary/5 border-b border-primary/10">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-foreground text-lg">Compra Única</span>
-                    <span className="text-2xl font-black text-foreground">
+                    <span className="font-semibold text-foreground text-lg">Compra Única</span>
+                    <span className="text-2xl font-semibold text-foreground">
                       R$ {price.toFixed(2)}
                     </span>
                   </div>
@@ -291,7 +291,7 @@ const ProductDetail = () => {
                     <Button variant="ghost" size="icon" className="rounded-full h-10 w-10" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                       <Minus className="w-4 h-4" />
                     </Button>
-                    <span className="w-10 text-center font-bold text-foreground">{quantity}</span>
+                    <span className="w-10 text-center font-semibold text-foreground">{quantity}</span>
                     <Button variant="ghost" size="icon" className="rounded-full h-10 w-10" onClick={() => setQuantity(quantity + 1)}>
                       <Plus className="w-4 h-4" />
                     </Button>
@@ -299,7 +299,7 @@ const ProductDetail = () => {
 
                   <Button
                     size="lg"
-                    className="flex-1 gap-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full text-base font-bold h-12"
+                    className="flex-1 gap-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full text-base font-semibold h-12"
                     onClick={handleBuyNow}
                     disabled={!selectedVariant?.availableForSale}
                   >
@@ -312,7 +312,7 @@ const ProductDetail = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full gap-3 rounded-full text-base font-bold h-12"
+                  className="w-full gap-3 rounded-full text-base font-semibold h-12"
                   onClick={handleAddToCart}
                   disabled={!selectedVariant?.availableForSale}
                 >
@@ -329,7 +329,7 @@ const ProductDetail = () => {
                       onClick={() => toggleAccordion(item.id)}
                       className="w-full flex items-center justify-between py-5 text-left"
                     >
-                      <span className="font-bold text-foreground text-base">{item.title}</span>
+                      <span className="font-semibold text-foreground text-base">{item.title}</span>
                       <ChevronDown
                         className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
                           openAccordion === item.id ? "rotate-180" : ""
@@ -354,8 +354,8 @@ const ProductDetail = () => {
         <section className="mt-20 py-20 bg-primary/5">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-4">
-                Mais de <span className="italic text-primary">15 benefícios</span>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight mb-4">
+                Mais de <span className="italic text-primary font-accent">15 benefícios</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Cada dose é rica em vitaminas, minerais e superfoods com benefícios comprovados pela ciência para apoiar e manter sua saúde.
@@ -368,7 +368,7 @@ const ProductDetail = () => {
                   <div className="w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center mx-auto mb-5 group-hover:border-primary group-hover:bg-primary/5 transition-all">
                     <benefit.icon className="w-7 h-7 text-foreground group-hover:text-primary transition-colors" />
                   </div>
-                  <h3 className="font-bold text-foreground text-lg mb-2">{benefit.title}</h3>
+                  <h3 className="font-semibold text-foreground text-lg mb-2">{benefit.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
@@ -381,7 +381,7 @@ const ProductDetail = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight mb-4">
                   Em uma dose de<br />Daily Greens
                 </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
@@ -400,15 +400,15 @@ const ProductDetail = () => {
                     { label: "ZINCO", value: "3,6mg" },
                   ].map((item, index) => (
                     <div key={index} className="flex items-center justify-between py-4 border-b border-border/60">
-                      <span className="text-sm font-bold text-foreground tracking-wide uppercase">{item.label}</span>
-                      <span className="text-sm font-bold text-foreground">{item.value}</span>
+                      <span className="text-sm font-semibold text-foreground tracking-wide uppercase">{item.label}</span>
+                      <span className="text-sm font-semibold text-foreground">{item.value}</span>
                     </div>
                   ))}
                 </div>
 
                 <button
                   onClick={() => setShowNutritionModal(true)}
-                  className="inline-flex items-center gap-2 mt-8 px-6 py-3 border border-foreground rounded-full text-sm font-bold text-foreground hover:bg-foreground hover:text-background transition-colors"
+                  className="inline-flex items-center gap-2 mt-8 px-6 py-3 border border-foreground rounded-full text-sm font-semibold text-foreground hover:bg-foreground hover:text-background transition-colors"
                 >
                   Ver tabela nutricional completa
                   <ArrowRight className="w-4 h-4" />
@@ -425,7 +425,7 @@ const ProductDetail = () => {
                 ) : (
                   <div className="text-center">
                     <Leaf className="w-20 h-20 text-primary/30 mx-auto mb-4" />
-                    <span className="text-primary/40 font-bold text-xl">DAILY GREENS</span>
+                    <span className="text-primary/40 font-semibold text-xl">DAILY GREENS</span>
                   </div>
                 )}
               </div>
@@ -437,7 +437,7 @@ const ProductDetail = () => {
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight mb-4">
                 O que nossos clientes dizem
               </h2>
               <p className="text-primary-foreground/70 text-lg">Feedback real de quem já experimentou.</p>
@@ -455,7 +455,7 @@ const ProductDetail = () => {
                   <p className="text-primary-foreground/90 leading-relaxed mb-6 text-sm">
                     "{t.text}"
                   </p>
-                  <span className="text-sm font-bold text-primary-foreground/70">— {t.name}</span>
+                  <span className="text-sm font-semibold text-primary-foreground/70">— {t.name}</span>
                 </div>
               ))}
             </div>
@@ -465,7 +465,7 @@ const ProductDetail = () => {
         {/* CTA Section */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-foreground mb-4">
               Pronto para começar?
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">
@@ -473,7 +473,7 @@ const ProductDetail = () => {
             </p>
             <Button
               size="lg"
-              className="rounded-full text-base font-bold h-14 px-12"
+              className="rounded-full text-base font-semibold h-14 px-12"
               onClick={handleBuyNow}
               disabled={!selectedVariant?.availableForSale}
             >
@@ -488,7 +488,7 @@ const ProductDetail = () => {
             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowNutritionModal(false)} />
             <div className="relative bg-background rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-2xl">
               <div className="sticky top-0 bg-background border-b border-border px-6 py-4 flex items-center justify-between rounded-t-2xl">
-                <h3 className="text-lg font-black text-foreground">Informação Nutricional</h3>
+                <h3 className="text-lg font-semibold text-foreground">Informação Nutricional</h3>
                 <button onClick={() => setShowNutritionModal(false)} className="p-2 hover:bg-muted rounded-full transition-colors">
                   <X className="w-5 h-5" />
                 </button>
