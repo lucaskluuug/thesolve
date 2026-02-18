@@ -39,10 +39,10 @@ export const Categories = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top text */}
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <p className="text-sm font-semibold text-primary uppercase tracking-[0.2em] mb-4">
+          <p className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">
             Por que Daily Greens?
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
             Projetado para apoiar seu estilo de vida
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -62,7 +62,7 @@ export const Categories = () => {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
                 <benefit.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="text-xl font-extrabold text-foreground mb-3">
                 {benefit.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed max-w-sm mx-auto">

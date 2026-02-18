@@ -8,21 +8,21 @@ export const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-6 text-primary">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-primary">
               Sobre a The Solve
             </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-8 text-background leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-background leading-tight">
               Não vendemos milagres.
               <br />
               Vendemos{" "}
-              <span className="text-primary italic font-accent">consistência.</span>
+              <span className="text-primary">consistência.</span>
             </h2>
             <p className="text-lg text-background/60 mb-6 leading-relaxed">
               Existimos para transformar saúde e bem-estar com fórmulas inteligentes que unem ciência e estratégia funcional — para que cada pessoa escolha como quer se sentir, todos os dias.
             </p>
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-semibold gap-2"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 font-bold gap-2"
               asChild
             >
               <a href="#produtos">
@@ -45,7 +45,7 @@ export const About = () => {
                 className="p-8 rounded-2xl bg-background/5 border border-background/10 text-center animate-fade-up opacity-0"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
-                <div className="text-4xl sm:text-5xl font-semibold text-primary mb-2">
+                <div className="text-4xl sm:text-5xl font-extrabold text-primary mb-2">
                   {stat.number}
                 </div>
                 <p className="text-sm text-background/50 font-medium">

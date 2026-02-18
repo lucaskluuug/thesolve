@@ -69,11 +69,11 @@ export const CartDrawer = () => {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-sm truncate">{item.product.node.title}</h4>
+                        <h4 className="font-bold text-sm truncate">{item.product.node.title}</h4>
                         {item.variantTitle !== "Default Title" && (
                           <p className="text-xs text-muted-foreground">{item.variantTitle}</p>
                         )}
-                        <p className="font-semibold text-foreground mt-1">
+                        <p className="font-bold text-foreground mt-1">
                           R$ {parseFloat(item.price.amount).toFixed(2)}
                         </p>
                       </div>
@@ -99,8 +99,8 @@ export const CartDrawer = () => {
 
               <div className="flex-shrink-0 space-y-4 pt-4 border-t border-border bg-background mt-4">
                 <div className="flex justify-between items-center">
-                   <span className="text-lg font-semibold">Total</span>
-                   <span className="text-xl font-semibold text-foreground">R$ {totalPrice.toFixed(2)}</span>
+                  <span className="text-lg font-bold">Total</span>
+                  <span className="text-xl font-extrabold text-foreground">R$ {totalPrice.toFixed(2)}</span>
                 </div>
                 <Button onClick={createCheckout} className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-full" size="lg" disabled={items.length === 0 || isLoading}>
                   {isLoading ? (

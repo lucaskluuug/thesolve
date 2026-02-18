@@ -7,7 +7,7 @@ export const Footer = () => {
       {/* CTA Banner */}
       <div className="bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-primary-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-foreground mb-4">
             Comece sua jornada hoje
           </h2>
           <p className="text-primary-foreground/70 mb-8 max-w-lg mx-auto">
@@ -16,7 +16,7 @@ export const Footer = () => {
           </p>
           <a
             href="#produtos"
-            className="inline-flex items-center gap-2 bg-background text-foreground font-semibold px-8 py-3 rounded-full hover:bg-background/90 transition-colors"
+            className="inline-flex items-center gap-2 bg-background text-foreground font-bold px-8 py-3 rounded-full hover:bg-background/90 transition-colors"
           >
             Comprar agora
           </a>
@@ -40,7 +40,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold text-background uppercase tracking-wider mb-4">
+            <h4 className="text-xs font-bold text-background uppercase tracking-wider mb-4">
               Navegação
             </h4>
             <ul className="space-y-3">
@@ -80,7 +80,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold text-background uppercase tracking-wider mb-4">
+            <h4 className="text-xs font-bold text-background uppercase tracking-wider mb-4">
               Contato
             </h4>
             <ul className="space-y-3">

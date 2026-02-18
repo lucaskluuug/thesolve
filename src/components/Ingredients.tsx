@@ -42,10 +42,10 @@ export const Ingredients = () => {
     <section id="ingredientes" className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-4">
-          <p className="text-sm font-semibold text-primary uppercase tracking-[0.2em] mb-4">
+          <p className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">
             Ingredientes
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
             Ingredientes de qualidade otimizados para impacto
           </h2>
         </div>
@@ -64,10 +64,10 @@ export const Ingredients = () => {
               className="group p-8 rounded-2xl border border-border bg-background hover:bg-cream hover:border-primary/20 transition-all duration-300 animate-fade-up opacity-0"
               style={{ animationDelay: `${0.1 + index * 0.08}s` }}
             >
-              <span className="inline-block text-xs font-semibold text-primary uppercase tracking-wider mb-3 bg-primary/10 px-3 py-1 rounded-full">
+              <span className="inline-block text-xs font-bold text-primary uppercase tracking-wider mb-3 bg-primary/10 px-3 py-1 rounded-full">
                 {item.category}
               </span>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="text-xl font-extrabold text-foreground mb-3">
                 {item.name}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
