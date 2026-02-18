@@ -27,7 +27,7 @@ export const HowItWorks = () => {
     <section className="py-24 lg:py-32 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6">
             Como funciona
           </h2>
           <p className="text-lg text-primary-foreground/70 max-w-xl mx-auto">
