@@ -46,7 +46,7 @@ export const Ingredients = () => {
             Ingredientes
           </p>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
-            75+ ingredientes de qualidade otimizados para impacto
+            Ingredientes de qualidade otimizados para impacto
           </h2>
         </div>
 

@@ -33,9 +33,9 @@ export const Footer = () => {
               className="h-8 mb-6 brightness-0 invert"
             />
             <p className="text-background/50 max-w-md text-sm leading-relaxed">
-              Nutrição funcional e performance. Ciência, consistência e estilo de
-              vida funcional para quem quer viver com mais energia, foco e
-              realização.
+              Existimos para transformar saúde e bem-estar com fórmulas
+              inteligentes que unem ciência e estratégia funcional — para que
+              cada pessoa escolha como quer se sentir, todos os dias.
             </p>
           </div>
 
