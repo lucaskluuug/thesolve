@@ -80,7 +80,7 @@ export const Header = ({ forceDark = false }: HeaderProps) => {
           <div className="flex items-center gap-3">
             <Button
               size="sm"
-              className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-bold"
+              className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-semibold"
               asChild
             >
               <a href="#produtos">Comprar</a>
@@ -128,7 +128,7 @@ export const Header = ({ forceDark = false }: HeaderProps) => {
               </a>
               <Button
                 size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-bold w-fit"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 font-semibold w-fit"
                 asChild
               >
                 <a href="#produtos" onClick={() => setMobileMenuOpen(false)}>

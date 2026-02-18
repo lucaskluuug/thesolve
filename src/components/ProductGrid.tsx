@@ -51,10 +51,10 @@ export const ProductGrid = () => {
     <section id="produtos" className="py-24 lg:py-32 bg-cream">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">
+          <p className="text-sm font-semibold text-primary uppercase tracking-[0.2em] mb-4">
             Loja
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
             Nossos Produtos
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
@@ -65,7 +65,7 @@ export const ProductGrid = () => {
         {products.length === 0 ? (
           <div className="text-center py-20">
             <Package className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-foreground mb-2">
+            <h3 className="text-xl font-semibold text-foreground mb-2">
               Nenhum produto encontrado
             </h3>
             <p className="text-muted-foreground">Novos produtos em breve!</p>

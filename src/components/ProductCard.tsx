@@ -53,7 +53,7 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-muted">
-              <span className="text-4xl font-bold text-muted-foreground/20">
+              <span className="text-4xl font-semibold text-muted-foreground/20">
                 TSLV
               </span>
             </div>
@@ -62,19 +62,19 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
 
         {/* Content */}
         <div className="space-y-2">
-          <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+          <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
             {node.title}
           </h3>
 
           <div className="flex items-center justify-between">
-            <span className="text-lg font-extrabold text-foreground">
+            <span className="text-lg font-semibold text-foreground">
               R$ {price.toFixed(2)}
             </span>
 
             <Button
               size="sm"
               onClick={handleAddToCart}
-              className="gap-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-bold"
+              className="gap-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-semibold"
             >
               <ShoppingCart className="w-3.5 h-3.5" />
               Adicionar
