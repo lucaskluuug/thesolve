@@ -114,7 +114,7 @@ const ProductDetail = () => {
     {
       id: "what-is",
       title: "O que é Daily Greens?",
-      content: "Daily Greens é um blend premium de superfoods que combina fibras, vitaminas, minerais, adaptógenos e antioxidantes em uma dose diária. Com ingredientes como chlorella, matchá, cúrcuma e maca peruana, oferece nutrição completa em um único scoop."
+      content: "Daily Greens é um blend premium de superfoods que combina fibras, vitaminas, minerais, adaptógenos e antioxidantes em uma dose diária. Com ingredientes como chlorella, matchá, cúrcuma e maca peruana, oferece nutrição completa em 2 scoops (10g)."
     },
     {
       id: "for-who",
@@ -124,12 +124,12 @@ const ProductDetail = () => {
     {
       id: "how-to",
       title: "Como usar",
-      content: "1. Misture 1 scoop (13g) de Daily Greens em 200-300ml de água gelada.\n2. Agite até dissolver completamente.\n3. Aproveite! Melhor consumido pela manhã em jejum."
+      content: "1. Misture 2 scoops (10g) de Daily Greens em 200-300ml de água gelada.\n2. Agite até dissolver completamente.\n3. Aproveite! Melhor consumido pela manhã em jejum."
     },
     {
       id: "quality",
       title: "Qualidade & Ingredientes",
-      content: "Formulado com 75+ ingredientes de alta absorção e densidade nutricional. Inclui chlorella, spirulina, matchá, cúrcuma, maca peruana, gengibre, fibras prebióticas e probióticos. Sem glúten, sem açúcar adicionado, sem corantes artificiais."
+      content: "Formulado com ingredientes de alta absorção e densidade nutricional. Inclui chlorella, spirulina, matchá, cúrcuma, maca peruana, gengibre, fibras prebióticas e probióticos. Sem glúten, sem açúcar adicionado, sem corantes artificiais."
     },
   ];
 
@@ -138,7 +138,7 @@ const ProductDetail = () => {
     { icon: Zap, title: "Metabolismo Energético", description: "Complexo B completo e Guaraná para energia sustentável ao longo do dia." },
     { icon: Brain, title: "Função Cognitiva", description: "Matchá e Maca Peruana para foco mental e clareza." },
     { icon: Leaf, title: "Suporte Digestivo", description: "6,2g de fibras prebióticas (inulina e polidextrose) por dose." },
-    { icon: Sparkles, title: "Pele, Cabelo & Unhas", description: "Biotina, Vitamina E e antioxidantes para beleza de dentro para fora." },
+    { icon: Heart, title: "Bem-estar", description: "Ingredientes que promovem equilíbrio e bem-estar no dia a dia." },
     { icon: Droplets, title: "Detox Natural", description: "Chlorella, Cúrcuma e Ora-pro-nóbis para limpeza e desintoxicação." },
   ];
 
@@ -195,7 +195,7 @@ const ProductDetail = () => {
                   <div className="flex items-center gap-6 text-white text-xs font-medium">
                     <div className="flex items-center gap-2">
                       <Leaf className="w-4 h-4" />
-                      <span>75+ Ingredientes</span>
+                      <span>Ingredientes Funcionais</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Shield className="w-4 h-4" />
@@ -355,7 +355,7 @@ const ProductDetail = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground tracking-tight mb-4">
-                Mais de <span className="italic text-primary">75 benefícios</span>
+                Mais de <span className="italic text-primary">15 benefícios</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Cada dose é rica em vitaminas, minerais e superfoods com benefícios comprovados pela ciência para apoiar e manter sua saúde.
@@ -382,7 +382,7 @@ const ProductDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight mb-4">
-                  Em um scoop de<br />Daily Greens
+                  Em uma dose de<br />Daily Greens
                 </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
                   Daily Greens complementa sua alimentação diária. Fácil de integrar a qualquer estilo de vida ou rotina de saúde. Cuide dos seus macros, depois tome Daily Greens.
@@ -469,7 +469,7 @@ const ProductDetail = () => {
               Pronto para começar?
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">
-              Um scoop por dia. Todos os nutrientes que seu corpo precisa.
+              Uma dose por dia. Todos os nutrientes que seu corpo precisa.
             </p>
             <Button
               size="lg"

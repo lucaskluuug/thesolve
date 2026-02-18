@@ -38,13 +38,11 @@ export const Hero = () => {
               <span className="text-primary">Resolvida.</span>
             </h1>
 
-            <p
-              className="text-lg sm:text-xl text-white/70 max-w-lg mb-10 leading-relaxed animate-fade-up opacity-0"
+            <div
+              className="mb-10 animate-fade-up opacity-0"
               style={{ animationDelay: "0.35s" }}
-            >
-              Superfoods, fibras, vitaminas e minerais em uma dose. Energia
-              limpa, foco e bem-estar todos os dias.
-            </p>
+            />
+
 
             <div
               className="flex flex-col sm:flex-row items-start gap-4 animate-fade-up opacity-0"
@@ -56,7 +54,7 @@ export const Hero = () => {
                 asChild
               >
                 <a href="#produtos">
-                  Começar agora
+                  Comprar agora
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </Button>
@@ -86,7 +84,7 @@ export const Hero = () => {
             <div className="flex items-center gap-3">
               <FlaskConical className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium">
-                75+ ingredientes funcionais
+                Ingredientes funcionais
               </span>
             </div>
             <div className="flex items-center gap-3">
